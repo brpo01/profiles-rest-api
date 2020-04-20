@@ -15,7 +15,7 @@ class UserProfileManager(BaseUserManager):
         email = self.normalize_email(email)#converts all emails to lowercase
         user = self.model(email=email, name=name)
         
-        user = set_password(password)
+        user.set_password(password)
         user.save(using=self._db)
         
         return user
