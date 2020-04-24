@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from . import serializers
 from rest_framework import status
 from rest_framework import viewsets
-
+from . import models
 # Create your views here.
 
 class HelloApiView(APIView):
@@ -120,3 +120,11 @@ class HelloViewSet(viewsets.ViewSet):
         return Response({
             'http_method':'DELETE'
         })
+        
+
+"""Creating our UserProfile endpoint"""
+class UserProfileViewSet(viewsets.ModelViewSet):
+    
+    serializer_class = serializers.UserProfileSerializer
+    
+    queryset = models.UserProfile.objects.all()
